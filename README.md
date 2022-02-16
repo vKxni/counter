@@ -1,5 +1,9 @@
 # Counter
+Simple counter app written in Elixir using the Phoenix Framework.
+Including topic, endpoints for subscribe/broadcast etc.
+<3
 
+## Get started
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
