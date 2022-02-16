@@ -21,9 +21,13 @@ defmodule CounterWeb.Counter do
   def handle_event("dec", _, socket) do
     new_state = update(socket, :val, (&(&1 - 1)))
     CounterWeb.Endpoint.broadcast_from(self(), @topic, "dec", new_state.assigns)
+    # The new_state.assigns is a Map
+    # that includes the key val where the value is 1 (after we clicked on the increment button).
     {:noreply, new_state}
   end
 
+  # handle_info/2 handles Elixir process messages where msg is the received message and socket is the Phoenix.Socket.
+  # The line {:noreply, assign(socket, val: msg.payload.val)} just means "don't send this message to the socket again" (which would cause a recursive loop of updates).
   def handle_info(msg, socket) do
     {:noreply, assign(socket, val: msg.payload.val)}
   end
