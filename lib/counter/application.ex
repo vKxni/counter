@@ -8,10 +8,12 @@ defmodule Counter.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      Counter.Count,
       # Start the Telemetry supervisor
       CounterWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Counter.PubSub},
+      Counter.Presence,
       # Start the Endpoint (http/https)
       CounterWeb.Endpoint
       # Start a worker by calling: Counter.Worker.start_link(arg)
