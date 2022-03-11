@@ -1,6 +1,6 @@
 defmodule CounterWeb.Counter do
   use Phoenix.LiveView
-  alias Counter.Count
+  alias Counter.Count # file for logic from lib/counter_web/counter.ex
   alias Phoenix.PubSub
   alias Counter.Presence
 

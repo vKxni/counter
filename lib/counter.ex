@@ -8,17 +8,16 @@ defmodule Counter.Count do
   """
 
   use GenServer
-
   alias Phoenix.PubSub
 
   @name :counter_server
-
   @start_value 0
 
   def topic do
     "count"
   end
 
+  # start the genserver
   def start_link(_opts) do
     GenServer.start_link(__MODULE__, @start_value, name: @name)
   end
@@ -35,6 +34,7 @@ defmodule Counter.Count do
     GenServer.call @name, :current
   end
 
+#  @spec init(any) :: {:ok, any}
   def init(start_count) do
     {:ok, start_count}
   end
