@@ -51,7 +51,6 @@ defmodule CounterWeb.Counter do
         %{assigns: %{present: present}} = socket
       ) do
     new_present = present + map_size(joins) - map_size(leaves)
-
     {:noreply, assign(socket, :present, new_present)}
   end
 
